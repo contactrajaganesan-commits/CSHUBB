@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#000;color:#e8eaf0;font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#1a1a1a;border-radius:3px}
+
+/* ── Layout ── */
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ── Nav ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #111;transition:background .3s}
+.nav.scrolled{background:rgba(0,0,0,.95);border-bottom-color:#1a1a1a}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:32px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:18px;font-weight:900;color:#e8c97a;letter-spacing:-.3px;flex-shrink:0}
+.nav-logo svg{flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px;flex:1}
+.nav-links a{color:#8892a4;text-decoration:none;font-size:14px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .15s,background .15s;white-space:nowrap}
+.nav-links a:hover{color:#e8eaf0;background:rgba(255,255,255,.05)}
+.nav-links a.active{color:#e8c97a}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hamburger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;cursor:pointer;padding:6px;margin-left:8px}
+.hamburger span{display:block;width:22px;height:2px;background:#8892a4;border-radius:2px;transition:all .2s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;flex-direction:column;gap:2px;padding:16px 24px 20px;border-top:1px solid #111;background:rgba(0,0,0,.97)}
+.mobile-menu a{color:#8892a4;text-decoration:none;font-size:15px;font-weight:500;padding:10px 4px;border-bottom:1px solid #111}
+.mobile-menu a:last-of-type{border-bottom:none}
+.mobile-actions{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.mobile-actions .btn-outline,.mobile-actions .btn-primary{text-align:center;display:block}
+
+/* ── Buttons ── */
+.btn-primary{background:linear-gradient(135deg,#ff914d,#ffde59);color:#000;font-weight:800;font-size:14px;padding:10px 22px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity .15s,transform .15s;white-space:nowrap;font-family:inherit}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-primary.btn-lg{padding:14px 28px;font-size:15px;border-radius:12px}
+.btn-outline{background:transparent;color:#e8eaf0;font-weight:600;font-size:14px;padding:9px 20px;border-radius:10px;border:1px solid #2a2a2a;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .15s,color .15s,background .15s;white-space:nowrap;font-family:inherit}
+.btn-outline:hover{border-color:#4a4a4a;background:rgba(255,255,255,.04);color:#fff}
+.btn-outline.btn-lg{padding:13px 26px;font-size:15px;border-radius:12px}
+
+/* ── Section helpers ── */
+.section-header{text-align:center;margin-bottom:8px}
+.section-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#e8c97a;margin-bottom:14px;padding:4px 14px;background:rgba(232,201,122,.1);border:1px solid rgba(232,201,122,.2);border-radius:100px}
+.section-title{font-size:clamp(26px,4vw,42px);font-weight:900;color:#e8eaf0;line-height:1.12;letter-spacing:-.5px;margin-bottom:16px}
+.section-sub{font-size:15px;color:#8892a4;max-width:540px;margin:0 auto;line-height:1.7}
+.grad{background:linear-gradient(135deg,#ff914d,#ffde59);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── Page hero (for inner pages) ── */
+.page-hero{padding:120px 24px 60px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid #111}
+.page-hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse at top,rgba(255,145,77,.1) 0%,transparent 60%);pointer-events:none}
+.page-hero h1{font-size:clamp(30px,5vw,56px);font-weight:900;color:#e8eaf0;line-height:1.1;letter-spacing:-.8px;margin-bottom:16px}
+.page-hero p{font-size:16px;color:#8892a4;max-width:520px;margin:0 auto;line-height:1.7}
+
+/* ── Accordion ── */
+.accordion-section{padding:80px 24px}
+.accordion-wrap{max-width:760px;margin:0 auto}
+.accordion-group{margin-bottom:48px}
+.accordion-group-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#e8c97a;margin-bottom:16px;padding:0 4px}
+.accordion-item{border:1px solid #1a1a1a;border-radius:12px;margin-bottom:8px;overflow:hidden;transition:border-color .2s}
+.accordion-item.open{border-color:#2a2a2a}
+.accordion-btn{width:100%;background:transparent;border:none;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:inherit;text-align:left;gap:16px;transition:background .15s}
+.accordion-btn:hover{background:rgba(255,255,255,.02)}
+.accordion-btn-text{font-size:15px;font-weight:600;color:#e8eaf0;line-height:1.4}
+.accordion-icon{width:28px;height:28px;border-radius:50%;background:#141414;border:1px solid #1e1e1e;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s}
+.accordion-item.open .accordion-icon{transform:rotate(45deg);background:rgba(255,145,77,.15);border-color:rgba(255,145,77,.3)}
+.accordion-icon svg{transition:stroke .2s}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.accordion-body-inner{padding:0 24px 22px;font-size:14px;color:#8892a4;line-height:1.8}
+.accordion-body-inner p{margin-bottom:10px}
+.accordion-body-inner p:last-child{margin-bottom:0}
+.accordion-body-inner ul{padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.accordion-body-inner ul li{color:#8892a4}
+.accordion-body-inner strong{color:#c8cad0}
+.accordion-body-inner code{background:#141414;border:1px solid #1e1e1e;padding:2px 7px;border-radius:5px;font-size:12px;color:#e8c97a}
+
+/* ── Contact banner ── */
+.contact-banner{margin-top:48px;padding:28px 32px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.contact-banner-text h4{font-size:15px;font-weight:700;color:#e8eaf0;margin-bottom:4px}
+.contact-banner-text p{font-size:13px;color:#5a6478}
+.contact-banner a.contact-link{color:#e8c97a;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;border-bottom:1px solid rgba(232,201,122,.3);padding-bottom:2px;transition:border-color .15s}
+.contact-banner a.contact-link:hover{border-color:#e8c97a}
+
+/* ── Footer ── */
+.footer{background:#060606;border-top:1px solid #111;padding:64px 24px 32px}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand{}
+.footer-desc{font-size:13px;color:#5a6478;line-height:1.8;max-width:260px;margin-bottom:12px}
+.footer-links-inline a{color:#5a6478;font-size:12px;text-decoration:none;transition:color .15s}
+.footer-links-inline a:hover{color:#e8c97a}
+.footer-col{display:flex;flex-direction:column;gap:8px}
+.footer-col-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3a3a3a;margin-bottom:4px}
+.footer-col a{color:#5a6478;font-size:13px;text-decoration:none;transition:color .15s}
+.footer-col a:hover{color:#e8eaf0}
+.footer-bottom{border-top:1px solid #111;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:#3a3a3a}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:640px){
+  .nav-links,.nav-actions{display:none}
+  .hamburger{display:flex}
+  .mobile-menu.open{display:flex}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-brand{order:-1}
+  .contact-banner{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .btn-primary.btn-lg,.btn-outline.btn-lg{width:100%;text-align:center;padding:14px 20px}
+}

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CSHUBB — Private Customer Success Workspace for SaaS Teams</title>
+<meta name="description" content="CSHUBB is a private, invite-only Customer Success workspace for SaaS teams. Track accounts, forecast revenue, manage renewals, and run AI-powered insights — all in one secure platform."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+/* ── Hero ── */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(ellipse at center,rgba(255,145,77,.13) 0%,rgba(255,222,89,.06) 40%,transparent 70%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,145,77,.12);border:1px solid rgba(255,145,77,.3);border-radius:100px;padding:5px 16px;font-size:12px;color:#e8c97a;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:28px}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:#ff914d;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;color:#e8eaf0;margin-bottom:24px;max-width:780px}
+.hero h1 .grad{background:linear-gradient(135deg,#ff914d,#ffde59);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(16px,2.2vw,20px);color:#8892a4;line-height:1.7;max-width:560px;margin:0 auto 40px}
+.hero-cta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.hero-meta{margin-top:32px;font-size:12px;color:#5a6478;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.hero-meta span{display:flex;align-items:center;gap:5px}
+
+/* ── Logos / Social Proof ── */
+.social-proof{padding:40px 24px;text-align:center;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}
+.social-proof p{font-size:11px;color:#5a6478;text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+.logo-item{font-size:13px;color:#2a2a2a;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 0;user-select:none}
+
+/* ── Features Grid ── */
+.features-section{padding:100px 24px}
+.features-section .container{max-width:1100px;margin:0 auto}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:#1a1a1a;border-radius:16px;overflow:hidden;border:1px solid #1a1a1a}
+.feature-card{background:#0a0a0a;padding:36px 32px;transition:background .2s}
+.feature-card:hover{background:#0f0f0f}
+.feature-icon{font-size:28px;margin-bottom:16px;display:block}
+.feature-card h3{font-size:17px;font-weight:700;color:#e8eaf0;margin-bottom:8px}
+.feature-card p{font-size:13px;color:#8892a4;line-height:1.75}
+.feature-tag{display:inline-block;margin-top:12px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:rgba(255,145,77,.1);color:#e8c97a;border:1px solid rgba(255,145,77,.2)}
+
+/* ── How it works ── */
+.how-section{padding:80px 24px;background:#060606}
+.steps-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-top:56px;position:relative}
+.steps-row::before{content:'';position:absolute;top:28px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#1a1a1a 20%,#1a1a1a 80%,transparent);display:none}
+@media(min-width:768px){.steps-row::before{display:block}}
+.step-item{text-align:center;position:relative;z-index:1}
+.step-num{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#ff914d,#ffde59);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#000;margin:0 auto 16px}
+.step-item h4{font-size:14px;font-weight:700;color:#e8eaf0;margin-bottom:6px}
+.step-item p{font-size:12px;color:#8892a4;line-height:1.65}
+
+/* ── AI Section ── */
+.ai-section{padding:100px 24px}
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:56px}
+.ai-card{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:14px;padding:28px;transition:border-color .2s,transform .2s}
+.ai-card:hover{border-color:rgba(255,145,77,.3);transform:translateY(-2px)}
+.ai-card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.ai-card-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,rgba(255,145,77,.15),rgba(255,222,89,.08));border:1px solid rgba(255,145,77,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ai-card-title{font-size:14px;font-weight:700;color:#e8eaf0}
+.ai-card-plan{font-size:10px;color:#5a6478;margin-top:1px}
+.ai-card p{font-size:12px;color:#8892a4;line-height:1.7}
+.ai-providers{margin-top:64px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:16px;padding:40px 32px}
+.ai-providers h3{font-size:20px;font-weight:700;color:#e8eaf0;margin-bottom:8px}
+.ai-providers p{font-size:13px;color:#8892a4;margin-bottom:28px}
+.provider-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.provider-card{background:#141414;border:1px solid #1e1e1e;border-radius:10px;padding:18px;transition:border-color .2s}
+.provider-card:hover{border-color:#2a2a2a}
+.provider-card-name{font-size:13px;font-weight:700;color:#e8eaf0;margin-bottom:4px}
+.provider-card-sub{font-size:11px;color:#5a6478;line-height:1.5}
+.provider-badge{font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-top:8px;display:inline-block}
+.badge-free{background:rgba(29,158,117,.12);color:#22c78e;border:1px solid rgba(29,158,117,.3)}
+.badge-private{background:rgba(74,159,245,.12);color:#4a9ff5;border:1px solid rgba(74,159,245,.3)}
+.badge-cloud{background:rgba(201,168,76,.12);color:#e8c97a;border:1px solid rgba(201,168,76,.2)}
+
+/* ── Plans ── */
+.plans-section{padding:100px 24px;background:#060606}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:56px;max-width:1100px;margin-left:auto;margin-right:auto}
+.plan-card{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:16px;padding:28px;position:relative;transition:border-color .2s,transform .2s}
+.plan-card:hover{transform:translateY(-2px)}
+.plan-card.featured{border-color:rgba(255,145,77,.4);background:linear-gradient(180deg,rgba(255,145,77,.05) 0%,#0a0a0a 100%)}
+.plan-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#ff914d,#ffde59);color:#000;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:100px;white-space:nowrap}
+.plan-name{font-size:14px;font-weight:700;color:#e8c97a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.plan-price{font-size:36px;font-weight:900;color:#e8eaf0;line-height:1;margin-bottom:4px}
+.plan-price sup{font-size:16px;font-weight:700;color:#8892a4;margin-right:2px}
+.plan-price .per{font-size:13px;font-weight:400;color:#5a6478}
+.plan-tagline{font-size:12px;color:#5a6478;margin-bottom:20px}
+.plan-divider{height:1px;background:#1a1a1a;margin:16px 0}
+.plan-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.plan-stat{background:#141414;border:1px solid #1e1e1e;border-radius:8px;padding:10px}
+.plan-stat-val{font-size:16px;font-weight:700;color:#e8c97a;line-height:1}
+.plan-stat-label{font-size:10px;color:#5a6478;margin-top:2px}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:24px}
+.plan-features li{font-size:12px;color:#8892a4;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.plan-features li::before{content:'✓';color:#22c78e;font-weight:700;flex-shrink:0;margin-top:1px}
+.plan-features li.locked{color:#2a2a2a}
+.plan-features li.locked::before{content:'—';color:#2a2a2a}
+
+/* ── Security Banner ── */
+.security-banner{padding:80px 24px;background:#060606}
+.sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:48px}
+.sec-item{text-align:center;padding:28px 20px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:12px}
+.sec-item-icon{font-size:32px;margin-bottom:12px}
+.sec-item h4{font-size:13px;font-weight:700;color:#e8eaf0;margin-bottom:6px}
+.sec-item p{font-size:11px;color:#5a6478;line-height:1.6}
+.sec-cta{text-align:center;margin-top:40px}
+.sec-cta a{color:#e8c97a;font-size:13px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(232,201,122,.3);padding-bottom:2px}
+
+/* ── CTA Section ── */
+.cta-section{padding:100px 24px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(255,145,77,.1) 0%,transparent 70%);pointer-events:none}
+.cta-section h2{font-size:clamp(28px,4vw,48px);font-weight:900;color:#e8eaf0;line-height:1.15;margin-bottom:16px}
+.cta-section p{font-size:16px;color:#8892a4;max-width:480px;margin:0 auto 36px;line-height:1.7}
+.cta-note{margin-top:16px;font-size:11px;color:#5a6478}
+
+/* ── Integration logos ── */
+.integrations{padding:80px 24px;text-align:center;background:#060606;border-top:1px solid #1a1a1a}
+.int-grid{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px}
+.int-pill{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:100px;padding:8px 18px;font-size:12px;color:#5a6478;font-weight:600;transition:border-color .2s,color .2s}
+.int-pill:hover{border-color:#2a2a2a;color:#8892a4}
+
+/* ── Testimonial / quote ── */
+.quote-section{padding:80px 24px;text-align:center}
+.quote-box{max-width:680px;margin:0 auto;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:16px;padding:40px 36px}
+.quote-mark{font-size:48px;color:rgba(255,145,77,.3);line-height:.7;margin-bottom:16px;font-family:Georgia,serif}
+.quote-text{font-size:18px;color:#c8cad0;line-height:1.7;font-style:italic;margin-bottom:20px}
+.quote-author{font-size:13px;color:#5a6478}
+.quote-author strong{color:#e8c97a}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#lg)"/><text x="14" y="19" text-anchor="middle" font-family="Lato,sans-serif" font-weight="900" font-size="12" fill="#000">CS</text><defs><linearGradient id="lg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#ff914d"/><stop offset="1" stop-color="#ffde59"/></linearGradient></defs></svg>
+      <span>CSHUBB</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#ai-tools">AI Tools</a>
+      <a href="#pricing">Pricing</a>
+      <a href="security.html">Security</a>
+      <a href="faq.html">FAQs</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://app.cshubb.com" class="btn-outline" target="_blank">Login</a>
+      <a href="https://join.cshubb.com" class="btn-primary" target="_blank">Request Beta Access</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features" onclick="toggleMenu()">Features</a>
+    <a href="#ai-tools" onclick="toggleMenu()">AI Tools</a>
+    <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+    <a href="security.html" onclick="toggleMenu()">Security</a>
+    <a href="faq.html" onclick="toggleMenu()">FAQs</a>
+    <div class="mobile-actions">
+      <a href="https://app.cshubb.com" class="btn-outline" target="_blank">Login</a>
+      <a href="https://join.cshubb.com" class="btn-primary" target="_blank">Request Beta Access</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div style="position:relative;z-index:1;max-width:900px;margin:0 auto">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Private Beta · Invite Only
+    </div>
+    <h1>The Private CS Workspace<br/>Built for <span class="grad">SaaS Teams</span></h1>
+    <p class="hero-sub">CSHUBB gives Customer Success teams a secure, AI-powered workspace to track accounts, forecast revenue, manage renewals, and reduce churn — all in one place.</p>
+    <div class="hero-cta">
+      <a href="https://join.cshubb.com" class="btn-primary btn-lg" target="_blank">Request Early Access →</a>
+      <a href="https://www.slotmee.com/raja-2iwrb" class="btn-outline btn-lg" target="_blank">Book a Demo</a>
+    </div>
+    <div class="hero-meta">
+      <span>🔒 Invite-only access</span>
+      <span>⚡ Free during beta</span>
+      <span>🤖 AI included</span>
+      <span>🏢 Org-isolated data</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="social-proof">
+  <p>Built for modern CS teams running on</p>
+  <div class="logo-row">
+    <span class="logo-item">HubSpot</span>
+    <span class="logo-item">Gainsight</span>
+    <span class="logo-item">Salesforce</span>
+    <span class="logo-item">Totango</span>
+    <span class="logo-item">ChurnZero</span>
+    <span class="logo-item">Intercom</span>
+    <span class="logo-item">Slack</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">How It Works</div>
+      <h2 class="section-title">Up and running in <span class="grad">minutes</span></h2>
+      <p class="section-sub">CSHUBB is designed for CS teams who need a private, secure workspace without weeks of implementation.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <h4>Request Access</h4>
+        <p>Submit a beta request at join.cshubb.com. Your workspace is provisioned within 24 hours.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <h4>Import Accounts</h4>
+        <p>Drop in your CSV or connect via webhook. All accounts sync instantly across your team.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <h4>Connect AI</h4>
+        <p>Use the built-in Groq integration for free — or bring your own Claude, Gemini, or LM Studio key.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <h4>Reduce Churn</h4>
+        <p>Get AI-powered insights on at-risk accounts, QBR talking points, and expansion opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Core Modules</div>
+      <h2 class="section-title">Everything your CS team <span class="grad">actually needs</span></h2>
+      <p class="section-sub">Purpose-built modules that cover the full customer success lifecycle — without the bloat of enterprise tools.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-icon">◉</span>
+        <h3>Account Management</h3>
+        <p>A single source of truth for all your customer accounts. Track health scores, ARR, MRR, NPS, usage, open tickets, renewal windows, churn risk, and expansion flags — with live search and 7-dimension filtering.</p>
+        <span class="feature-tag">All Plans</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">◈</span>
+        <h3>Revenue Intelligence</h3>
+        <p>Visualise ARR breakdown, MRR trends, renewal forecasts, and at-risk revenue in one dashboard. Understand your book of business at a glance without stitching together spreadsheets.</p>
+        <span class="feature-tag">Starter +</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">◧</span>
+        <h3>Pipeline & Renewals</h3>
+        <p>Kanban-style onboarding pipeline (Kickoff → Implementation → Training → Go-Live → Adoption) alongside a renewal board so you never miss a window again.</p>
+        <span class="feature-tag">Starter +</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">✦</span>
+        <h3>AI Tools</h3>
+        <p>Run AI workflows directly on your account data — churn risk analysis, weekly digest, account pulse, QBR talking points, and expansion spotting. Powered by Groq by default, no setup required.</p>
+        <span class="feature-tag">Growth +</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⊕</span>
+        <h3>Import & Export</h3>
+        <p>Drag-and-drop CSV import with a downloadable template. Export to CSV or JSON for backups or migrations. Custom field support for any data your team tracks.</p>
+        <span class="feature-tag">All Plans</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📋</span>
+        <h3>Activity Notes & Tags</h3>
+        <p>Log call summaries, risk flags, and follow-up actions per account. Tag accounts with custom labels and filter across your entire book in seconds.</p>
+        <span class="feature-tag">All Plans</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>Bulk Operations</h3>
+        <p>Select multiple accounts and bulk edit fields, bulk export, or bulk delete (admin only). Changes sync to all org members instantly via Supabase real-time.</p>
+        <span class="feature-tag">Starter +</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔗</span>
+        <h3>Webhooks & Integrations</h3>
+        <p>Connect CSHUBB to Zapier, Make, n8n, HubSpot, or any tool that speaks HTTP POST. Supports upsert, create, and update modes with HMAC signature verification.</p>
+        <span class="feature-tag">Growth +</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🛡</span>
+        <h3>Admin & Org Control</h3>
+        <p>Per-org feature flags, invite code management, usage analytics, audit logs, user role control, and plan management — all from a private admin panel visible only to workspace admins.</p>
+        <span class="feature-tag">All Plans</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TOOLS -->
+<section class="ai-section" id="ai-tools" style="background:#060606">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">AI-Powered</div>
+      <h2 class="section-title">AI that runs on <span class="grad">your account data</span></h2>
+      <p class="section-sub">Every AI tool in CSHUBB is context-aware — it reads your actual accounts, not generic prompts. History tracking shows what changed between runs.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-card-icon">💓</div>
+          <div>
+            <div class="ai-card-title">Account Pulse</div>
+            <div class="ai-card-plan">All Plans</div>
+          </div>
+        </div>
+        <p>Get a real-time health snapshot of any account — usage trends, ticket volume, NPS trajectory, and key risk signals in a concise briefing.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-card-icon">📊</div>
+          <div>
+            <div class="ai-card-title">Weekly Digest</div>
+            <div class="ai-card-plan">Starter +</div>
+          </div>
+        </div>
+        <p>A curated weekly summary of your entire book — top risks, upcoming renewals, health changes, and expansion opportunities, ready to share with leadership.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-card-icon">⚠️</div>
+          <div>
+            <div class="ai-card-title">Churn Risk Analysis</div>
+            <div class="ai-card-plan">Starter +</div>
+          </div>
+        </div>
+        <p>AI analyses health score, usage drop, ticket spikes, and renewal proximity to flag accounts most likely to churn — before it's too late to act.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-card-icon">🎯</div>
+          <div>
+            <div class="ai-card-title">QBR Talking Points</div>
+            <div class="ai-card-plan">Growth +</div>
+          </div>
+        </div>
+        <p>Generate structured, data-backed QBR talking points for any account in seconds — wins, risks, usage story, and recommended next steps.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-card-icon">🚀</div>
+          <div>
+            <div class="ai-card-title">Expansion Spotter</div>
+            <div class="ai-card-plan">Growth +</div>
+          </div>
+        </div>
+        <p>Identifies accounts with high usage, high NPS, and low ticket volume that are ripe for upsell or cross-sell — so revenue doesn't slip through the cracks.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-card-icon">🕐</div>
+          <div>
+            <div class="ai-card-title">AI History & Delta Tracking</div>
+            <div class="ai-card-plan">All Plans</div>
+          </div>
+        </div>
+        <p>Every AI run is saved. Delta tracking highlights what changed between runs — new insights, removed risks, and unchanged signals — so you never lose context.</p>
+      </div>
+    </div>
+
+    <div class="ai-providers">
+      <h3>Your AI, Your Choice</h3>
+      <p>CSHUBB supports multiple AI providers. Use Groq for free — no setup required — or bring your own key for Claude, Gemini, or run 100% offline with LM Studio.</p>
+      <div class="provider-row">
+        <div class="provider-card">
+          <div class="provider-card-name">⚡ Groq</div>
+          <div class="provider-card-sub">Llama 3.1 8B at 500+ tokens/sec. Default provider — get your free key at console.groq.com</div>
+          <span class="provider-badge badge-free">Free · Default</span>
+        </div>
+        <div class="provider-card">
+          <div class="provider-card-name">🖥 LM Studio</div>
+          <div class="provider-card-sub">Runs 100% on your device. No internet, no API key, no data leaves your machine.</div>
+          <span class="provider-badge badge-private">Offline · Private</span>
+        </div>
+        <div class="provider-card">
+          <div class="provider-card-name">Claude (Anthropic)</div>
+          <div class="provider-card-sub">Bring your own key from console.anthropic.com. Highest quality reasoning.</div>
+          <span class="provider-badge badge-cloud">Pro + Enterprise</span>
+        </div>
+        <div class="provider-card">
+          <div class="provider-card-name">Gemini (Google)</div>
+          <div class="provider-card-sub">Connect via Google AI Studio. Supports 2.5 Flash, 2.5 Pro, and Flash Lite.</div>
+          <span class="provider-badge badge-cloud">Growth +</span>
+        </div>
+      </div>
+      <p style="margin-top:20px;font-size:12px;color:#5a6478">Admins can set a single org-wide API key so users never need to configure anything individually.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="plans-section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Pricing</div>
+      <h2 class="section-title">Simple, transparent <span class="grad">pricing</span></h2>
+      <p class="section-sub">Start free during beta. All plans include core account management, CSV import/export, activity notes, and tags.</p>
+    </div>
+    <div class="plans-grid">
+
+      <!-- Trial -->
+      <div class="plan-card">
+        <div class="plan-name">Trial</div>
+        <div class="plan-price"><sup>Free</sup> during beta</div>
+        <div class="plan-tagline">Explore CSHUBB with your team</div>
+        <div class="plan-divider"></div>
+        <div class="plan-stat-row">
+          <div class="plan-stat"><div class="plan-stat-val">3</div><div class="plan-stat-label">Users</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">50</div><div class="plan-stat-label">Accounts</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">20</div><div class="plan-stat-label">AI Runs/mo</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">—</div><div class="plan-stat-label">Webhooks</div></div>
+        </div>
+        <ul class="plan-features">
+          <li>Accounts module</li>
+          <li>CSV import & export</li>
+          <li>Activity notes & tags</li>
+          <li>Account Pulse AI</li>
+          <li>Audit logs</li>
+          <li class="locked">Revenue module</li>
+          <li class="locked">Pipeline module</li>
+          <li class="locked">Webhooks</li>
+        </ul>
+        <a href="https://join.cshubb.com" class="btn-outline" style="width:100%;display:block;text-align:center;text-decoration:none" target="_blank">Request Access</a>
+      </div>
+
+      <!-- Starter -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><sup>$</sup>—<span class="per"> /mo</span></div>
+        <div class="plan-tagline">For growing CS teams</div>
+        <div class="plan-divider"></div>
+        <div class="plan-stat-row">
+          <div class="plan-stat"><div class="plan-stat-val">5</div><div class="plan-stat-label">Users</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">200</div><div class="plan-stat-label">Accounts</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">100</div><div class="plan-stat-label">AI Runs/mo</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">—</div><div class="plan-stat-label">Webhooks</div></div>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Trial</li>
+          <li>Revenue module</li>
+          <li>Pipeline & renewals</li>
+          <li>AI Tools module</li>
+          <li>Churn Risk AI</li>
+          <li>Weekly Digest AI</li>
+          <li>Bulk edit</li>
+          <li class="locked">Webhooks</li>
+        </ul>
+        <a href="https://join.cshubb.com" class="btn-outline" style="width:100%;display:block;text-align:center;text-decoration:none" target="_blank">Request Access</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="plan-card featured">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price"><sup>$</sup>—<span class="per"> /mo</span></div>
+        <div class="plan-tagline">For established CS teams</div>
+        <div class="plan-divider"></div>
+        <div class="plan-stat-row">
+          <div class="plan-stat"><div class="plan-stat-val">15</div><div class="plan-stat-label">Users</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">1K</div><div class="plan-stat-label">Accounts</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">500</div><div class="plan-stat-label">AI Runs/mo</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">3</div><div class="plan-stat-label">Webhooks</div></div>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Starter</li>
+          <li>QBR Talking Points AI</li>
+          <li>Expansion Spotter AI</li>
+          <li>Gemini AI provider</li>
+          <li>JSON export</li>
+          <li>Webhooks (3 endpoints)</li>
+          <li>Usage analytics</li>
+          <li class="locked">Custom fields</li>
+        </ul>
+        <a href="https://join.cshubb.com" class="btn-primary" style="width:100%;display:block;text-align:center;text-decoration:none" target="_blank">Request Access</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><sup>$</sup>—<span class="per"> /mo</span></div>
+        <div class="plan-tagline">For large CS organisations</div>
+        <div class="plan-divider"></div>
+        <div class="plan-stat-row">
+          <div class="plan-stat"><div class="plan-stat-val">50</div><div class="plan-stat-label">Users</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">5K</div><div class="plan-stat-label">Accounts</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">2K</div><div class="plan-stat-label">AI Runs/mo</div></div>
+          <div class="plan-stat"><div class="plan-stat-val">10</div><div class="plan-stat-label">Webhooks</div></div>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Growth</li>
+          <li>Custom fields</li>
+          <li>Bulk delete (admin)</li>
+          <li>Claude AI provider</li>
+          <li>Webhook HMAC signing</li>
+          <li>10 webhook endpoints</li>
+          <li>Org-wide API key policy</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://join.cshubb.com" class="btn-outline" style="width:100%;display:block;text-align:center;text-decoration:none" target="_blank">Request Access</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="plan-card" style="grid-column:1/-1;max-width:600px;margin:0 auto;width:100%">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Custom</div>
+        <div class="plan-tagline">Unlimited scale, dedicated support, and custom configuration</div>
+        <div class="plan-divider"></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-bottom:20px">
+          <div style="font-size:12px;color:#8892a4;display:flex;gap:8px;align-items:flex-start"><span style="color:#22c78e;font-weight:700;flex-shrink:0">✓</span>Unlimited users & accounts</div>
+          <div style="font-size:12px;color:#8892a4;display:flex;gap:8px;align-items:flex-start"><span style="color:#22c78e;font-weight:700;flex-shrink:0">✓</span>All AI providers incl. LM Studio (offline)</div>
+          <div style="font-size:12px;color:#8892a4;display:flex;gap:8px;align-items:flex-start"><span style="color:#22c78e;font-weight:700;flex-shrink:0">✓</span>Unlimited AI runs & webhooks</div>
+          <div style="font-size:12px;color:#8892a4;display:flex;gap:8px;align-items:flex-start"><span style="color:#22c78e;font-weight:700;flex-shrink:0">✓</span>Manual override & org control</div>
+          <div style="font-size:12px;color:#8892a4;display:flex;gap:8px;align-items:flex-start"><span style="color:#22c78e;font-weight:700;flex-shrink:0">✓</span>Dedicated onboarding & SLA</div>
+          <div style="font-size:12px;color:#8892a4;display:flex;gap:8px;align-items:flex-start"><span style="color:#22c78e;font-weight:700;flex-shrink:0">✓</span>Custom integrations available</div>
+        </div>
+        <a href="https://www.slotmee.com/raja-2iwrb" class="btn-primary" style="width:100%;display:block;text-align:center;text-decoration:none" target="_blank">Book a Demo →</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:#5a6478">Pricing will be announced post-beta. All beta users get extended free access. No credit card required.</p>
+  </div>
+</section>
+
+<!-- SECURITY BANNER -->
+<section class="security-banner">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Security</div>
+      <h2 class="section-title">Built with <span class="grad">security-first</span> architecture</h2>
+      <p class="section-sub">Your customer data is sensitive. CSHUBB is built on enterprise-grade security foundations with complete org isolation.</p>
+    </div>
+    <div class="sec-grid">
+      <div class="sec-item">
+        <div class="sec-item-icon">🔒</div>
+        <h4>Row-Level Security</h4>
+        <p>Supabase RLS policies enforce strict data isolation. Every query is scoped to your org — no other workspace can ever access your data.</p>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">✉️</div>
+        <h4>Magic Link Auth</h4>
+        <p>No passwords stored. Login is via email magic links — passwordless, phishing-resistant authentication for every user.</p>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🎫</div>
+        <h4>Invite-Only Access</h4>
+        <p>New users require a valid invite code to join your workspace. Admins control who gets in and can revoke access instantly.</p>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🔑</div>
+        <h4>HMAC Webhook Signing</h4>
+        <p>Webhook payloads are signed with HMAC-SHA256 so receiving systems can verify every request truly came from CSHUBB.</p>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">📋</div>
+        <h4>Audit Logs</h4>
+        <p>Every account operation, AI run, and admin action is logged. Admins can review the full audit trail at any time.</p>
+      </div>
+      <div class="sec-item">
+        <div class="sec-item-icon">🧠</div>
+        <h4>AI Privacy Options</h4>
+        <p>Use Groq or cloud AI with your key, or run LM Studio completely offline — your data never leaves your machine.</p>
+      </div>
+    </div>
+    <div class="sec-cta">
+      <a href="security.html">Read the full Security Overview →</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations">
+  <div class="container">
+    <div class="section-eyebrow" style="text-align:center">Integrations</div>
+    <h2 class="section-title" style="text-align:center;font-size:28px;margin-top:8px">Connect your existing <span class="grad">stack</span></h2>
+    <div class="int-grid">
+      <span class="int-pill">🔗 Zapier</span>
+      <span class="int-pill">⚙️ Make (Integromat)</span>
+      <span class="int-pill">🔄 n8n</span>
+      <span class="int-pill">🟠 HubSpot</span>
+      <span class="int-pill">⚡ Groq</span>
+      <span class="int-pill">🤖 Claude (Anthropic)</span>
+      <span class="int-pill">✨ Gemini (Google)</span>
+      <span class="int-pill">🖥 LM Studio</span>
+      <span class="int-pill">📄 CSV / JSON</span>
+      <span class="int-pill">🔔 Webhooks (HTTP POST)</span>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-box">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Customer Success teams shouldn't be stuck in spreadsheets or paying $30K/year for a platform they use 10% of. CSHUBB gives you the 20% of features that drive 80% of outcomes — in a secure, private workspace your whole team will actually use.</div>
+      <div class="quote-author"><strong>Raja Ganesan</strong> · Founder, CSHUBB</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <h2>Ready to take control of<br/>your CS workspace?</h2>
+    <p>Join the private beta. Your workspace is provisioned within 24 hours. No credit card, no commitments.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+      <a href="https://join.cshubb.com" class="btn-primary btn-lg" target="_blank">Request Beta Access →</a>
+      <a href="https://www.slotmee.com/raja-2iwrb" class="btn-outline btn-lg" target="_blank">Book a Demo</a>
+    </div>
+    <div class="cta-note">Free during beta · No credit card · Workspace ready in 24 hours</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:12px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#lg2)"/><text x="14" y="19" text-anchor="middle" font-family="Lato,sans-serif" font-weight="900" font-size="12" fill="#000">CS</text><defs><linearGradient id="lg2" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#ff914d"/><stop offset="1" stop-color="#ffde59"/></linearGradient></defs></svg>
+          <span>CSHUBB</span>
+        </div>
+        <p class="footer-desc">Private Customer Success workspace for SaaS teams. Invite-only, AI-powered, security-first.</p>
+        <div class="footer-links-inline">
+          <a href="mailto:support@cshubb.com">support@cshubb.com</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="#features">Features</a>
+        <a href="#ai-tools">AI Tools</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://app.cshubb.com" target="_blank">Login</a>
+        <a href="https://join.cshubb.com" target="_blank">Request Access</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="security.html">Security Overview</a>
+        <a href="faq.html">FAQs</a>
+        <a href="https://www.slotmee.com/raja-2iwrb" target="_blank">Book a Demo</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:support@cshubb.com">support@cshubb.com</a>
+        <a href="mailto:security@cshubb.com">security@cshubb.com</a>
+        <a href="https://join.cshubb.com" target="_blank">join.cshubb.com</a>
+        <a href="https://app.cshubb.com" target="_blank">app.cshubb.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CSHUBB Innovations. All rights reserved.</span>
+      <span>Private beta · Invite only · Built with ❤️ for CS teams</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

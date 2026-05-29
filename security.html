@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Security Overview — CSHUBB</title>
+<meta name="description" content="CSHUBB is built on enterprise-grade security: Supabase RLS, magic link auth, invite-only access, HMAC webhook signing, audit logs, and full org data isolation."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.security-badges{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}
+.sec-badge{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:100px;padding:7px 18px;font-size:12px;color:#8892a4;font-weight:600;display:flex;align-items:center;gap:7px}
+.sec-badge-dot{width:7px;height:7px;border-radius:50%;background:#22c78e;flex-shrink:0}
+.toc-box{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:14px;padding:28px 32px;max-width:760px;margin:0 auto 56px;display:flex;flex-wrap:wrap;gap:8px}
+.toc-link{color:#8892a4;font-size:13px;text-decoration:none;padding:4px 12px;border-radius:20px;border:1px solid #1a1a1a;transition:all .15s}
+.toc-link:hover{color:#e8c97a;border-color:rgba(232,201,122,.3);background:rgba(232,201,122,.05)}
+.info-card{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:12px;padding:20px 24px;margin-bottom:16px;display:flex;gap:16px;align-items:flex-start}
+.info-card-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.info-card-body h4{font-size:14px;font-weight:700;color:#e8eaf0;margin-bottom:4px}
+.info-card-body p{font-size:13px;color:#8892a4;line-height:1.75}
+.info-card.highlight{border-color:rgba(255,145,77,.2);background:rgba(255,145,77,.03)}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid #1e1e1e;color:#5a6478;background:#141414}
+.tag.green{color:#22c78e;border-color:rgba(34,199,142,.25);background:rgba(34,199,142,.06)}
+.tag.amber{color:#e8c97a;border-color:rgba(232,201,122,.25);background:rgba(232,201,122,.06)}
+.tag.blue{color:#4a9ff5;border-color:rgba(74,159,245,.25);background:rgba(74,159,245,.06)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#lg)"/><text x="14" y="19" text-anchor="middle" font-family="Lato,sans-serif" font-weight="900" font-size="12" fill="#000">CS</text><defs><linearGradient id="lg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#ff914d"/><stop offset="1" stop-color="#ffde59"/></linearGradient></defs></svg>
+      <span>CSHUBB</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#ai-tools">AI Tools</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="security.html" class="active">Security</a>
+      <a href="faq.html">FAQs</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://app.cshubb.com" class="btn-outline" target="_blank">Login</a>
+      <a href="https://join.cshubb.com" class="btn-primary" target="_blank">Request Beta Access</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#features" onclick="toggleMenu()">Features</a>
+    <a href="index.html#ai-tools" onclick="toggleMenu()">AI Tools</a>
+    <a href="index.html#pricing" onclick="toggleMenu()">Pricing</a>
+    <a href="security.html" onclick="toggleMenu()">Security</a>
+    <a href="faq.html" onclick="toggleMenu()">FAQs</a>
+    <div class="mobile-actions">
+      <a href="https://app.cshubb.com" class="btn-outline" target="_blank">Login</a>
+      <a href="https://join.cshubb.com" class="btn-primary" target="_blank">Request Beta Access</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-eyebrow">Security Overview</div>
+    <h1>Built <span class="grad">security-first</span>,<br/>not as an afterthought</h1>
+    <p>Your customer data is among your most sensitive business assets. CSHUBB is architected from the ground up with strict data isolation, passwordless authentication, and enterprise-grade controls at every layer.</p>
+    <div class="security-badges">
+      <span class="sec-badge"><span class="sec-badge-dot"></span>Supabase RLS</span>
+      <span class="sec-badge"><span class="sec-badge-dot"></span>Passwordless Auth</span>
+      <span class="sec-badge"><span class="sec-badge-dot"></span>Invite-Only</span>
+      <span class="sec-badge"><span class="sec-badge-dot"></span>Org Data Isolation</span>
+      <span class="sec-badge"><span class="sec-badge-dot"></span>HMAC Webhooks</span>
+      <span class="sec-badge"><span class="sec-badge-dot"></span>Audit Logs</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACCORDION CONTENT -->
+<section class="accordion-section">
+  <div class="container">
+
+    <!-- TOC -->
+    <div class="toc-box">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3a3a3a;width:100%;margin-bottom:4px">Jump to section</span>
+      <a class="toc-link" href="#auth">Authentication</a>
+      <a class="toc-link" href="#data-isolation">Data Isolation</a>
+      <a class="toc-link" href="#access-control">Access Control</a>
+      <a class="toc-link" href="#ai-privacy">AI & Privacy</a>
+      <a class="toc-link" href="#webhooks">Webhooks</a>
+      <a class="toc-link" href="#audit">Audit & Monitoring</a>
+      <a class="toc-link" href="#infra">Infrastructure</a>
+      <a class="toc-link" href="#your-keys">Your API Keys</a>
+      <a class="toc-link" href="#responsibility">Shared Responsibility</a>
+    </div>
+
+    <div class="accordion-wrap">
+
+      <!-- AUTHENTICATION -->
+      <div class="accordion-group" id="auth">
+        <div class="accordion-group-title">Authentication</div>
+
+        <div class="accordion-item open">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How does CSHUBB handle user authentication?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB uses <strong>passwordless magic link authentication</strong> powered by Supabase Auth. When you log in, you enter your email and we send a one-time login link. Clicking that link signs you in — no password is ever stored, transmitted, or exposed.</p>
+              <p>Magic links are single-use and expire after a short window. This eliminates the most common attack vector in credential-based systems: password reuse, brute-force, and credential stuffing attacks simply do not apply.</p>
+              <div class="tag-row">
+                <span class="tag green">No passwords stored</span>
+                <span class="tag green">Single-use tokens</span>
+                <span class="tag green">Short expiry window</span>
+                <span class="tag green">Email-verified identity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What happens after a magic link is clicked?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>After clicking the link, Supabase Auth verifies the token and issues a <strong>JWT (JSON Web Token)</strong> session for the authenticated user. This session is stored securely in your browser and is used for all subsequent API calls.</p>
+              <p>The JWT contains the user's email and org association but never contains sensitive account data. Every API request to the CSHUBB backend includes this JWT, which Supabase validates server-side on every request.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Can I use SSO or other identity providers?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>SSO (SAML, OIDC) integration is on the Enterprise roadmap. During beta, all authentication is via Supabase magic links. Enterprise customers can contact us to discuss custom identity provider integration.</p>
+              <p>Contact <a href="mailto:support@cshubb.com" style="color:#e8c97a">support@cshubb.com</a> for SSO enquiries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA ISOLATION -->
+      <div class="accordion-group" id="data-isolation">
+        <div class="accordion-group-title">Data Isolation</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How is my organisation's data isolated from other workspaces?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Every workspace in CSHUBB is scoped to an <strong>org_slug</strong> — a unique identifier provisioned when your workspace is created. All database tables that contain customer data (accounts, notes, AI history, activity logs) are partitioned by org_slug.</p>
+              <p><strong>Supabase Row-Level Security (RLS) policies</strong> are enforced at the database engine level. This means every SELECT, INSERT, UPDATE, and DELETE query is automatically filtered to only the authenticated user's org. It is architecturally impossible for a query from one workspace to return data from another — even if a bug existed in the application layer.</p>
+              <div class="tag-row">
+                <span class="tag green">Database-level RLS enforcement</span>
+                <span class="tag green">org_slug scoped on every table</span>
+                <span class="tag green">No cross-org data bleed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What is Supabase RLS and why does it matter?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Row-Level Security is a PostgreSQL feature that enforces access policies at the storage layer. In CSHUBB, RLS policies are defined so that each authenticated JWT can only see rows where <code>org_slug</code> matches the org in the user's session.</p>
+              <p>This means even if there was an application-level bug — a forgotten WHERE clause, an incorrect API parameter — the database itself would still return zero rows from another org. RLS is your last line of defence and it operates independently of the application code.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Where is data stored? Is it encrypted at rest?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>All persistent data is stored in <strong>Supabase (PostgreSQL)</strong> hosted on AWS infrastructure. Supabase provides encryption at rest for all database storage and encryption in transit via TLS 1.2+ for all connections.</p>
+              <p>No customer account data is written to client-side localStorage in the production app — all persistent state lives in the database, scoped to your org.</p>
+              <div class="tag-row">
+                <span class="tag green">Encrypted at rest (AES-256)</span>
+                <span class="tag green">TLS 1.2+ in transit</span>
+                <span class="tag blue">AWS-hosted infrastructure</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCESS CONTROL -->
+      <div class="accordion-group" id="access-control">
+        <div class="accordion-group-title">Access Control</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How does the invite-only system work?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>New users require a valid <strong>invite code</strong> to join a workspace on their first login. Invite codes are generated and distributed by workspace admins. Without a valid code, first-time login is rejected — no self-service signup is possible.</p>
+              <p>Returning users (who already have a record in the workspace) do not need an invite code on subsequent logins. Admins can view all active invite codes, revoke them, and create new ones from the Admin panel.</p>
+              <div class="tag-row">
+                <span class="tag green">No open registration</span>
+                <span class="tag green">Admin-controlled invite codes</span>
+                <span class="tag amber">Instant revocation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What are the user roles and what can each role do?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB has two core roles within a workspace:</p>
+              <ul>
+                <li><strong>Admin</strong> — full access to all modules, the Admin panel, invite code management, user management, feature flag overrides, org-wide API key policy, webhook management, billing, and bulk delete. The first user to create a workspace is automatically assigned admin.</li>
+                <li><strong>User (Member)</strong> — access to modules enabled for their plan (Accounts, Revenue, Pipeline, AI Tools, Import/Export). Cannot access Admin panel, cannot delete accounts, and cannot manage invite codes or billing.</li>
+              </ul>
+              <p style="margin-top:10px">Role assignment happens at login time based on whether the workspace already has any users. Admins can also revoke access for any user.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How is access revoked when someone leaves?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Admins can revoke any user's access from the Admin → Users panel. Revoked users see a <strong>blocked screen</strong> on their next login attempt and cannot access any workspace data. Their session token becomes invalid immediately.</p>
+              <p>The revocation is enforced at the database level — the user's <code>is_suspended</code> flag is set, and RLS policies deny all subsequent data access even if they have a valid JWT.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Can a user belong to multiple workspaces?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>By default, each email address is associated with a single workspace org. If a user attempts to join a second workspace with the same email, they are shown a conflict warning. The <code>allow_multi_org</code> flag can be enabled by an admin for specific users who legitimately need multi-workspace access (e.g., consultants managing multiple clients).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI & PRIVACY -->
+      <div class="accordion-group" id="ai-privacy">
+        <div class="accordion-group-title">AI & Data Privacy</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Does CSHUBB send my customer data to AI providers?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>When you run an AI tool (e.g., Churn Risk, Account Pulse, QBR Talking Points), CSHUBB constructs a prompt using your account data and sends it to your configured AI provider. <strong>The data goes directly from your browser to the AI provider API — it does not pass through CSHUBB servers.</strong></p>
+              <p>This means:</p>
+              <ul>
+                <li><strong>Groq</strong> — your data is sent to Groq's API (US-based). Subject to Groq's data processing terms.</li>
+                <li><strong>Claude (Anthropic)</strong> — sent to Anthropic's API. Subject to Anthropic's terms. You use your own API key.</li>
+                <li><strong>Gemini (Google)</strong> — sent to Google AI Studio API. Subject to Google's terms. You use your own API key.</li>
+                <li><strong>LM Studio</strong> — runs 100% on your local machine. <strong>No data ever leaves your device.</strong> Maximum privacy.</li>
+              </ul>
+              <p style="margin-top:10px">For maximum data privacy, use LM Studio as your AI provider.</p>
+              <div class="tag-row">
+                <span class="tag green">Direct browser → AI API (no CSHUBB intermediary)</span>
+                <span class="tag blue">LM Studio: 100% offline option</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How are AI API keys stored and protected?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>AI API keys (Groq, Claude, Gemini) are stored in the browser's <code>localStorage</code> on the user's own device and are never transmitted to or stored on CSHUBB servers.</p>
+              <p>For org-wide key mode (admin-configured), keys are stored in the <code>cs_org_features</code> table in Supabase, scoped to the org, and protected by RLS. Only users within that org can retrieve their org's configured key, and only admins can set or change it.</p>
+              <div class="tag-row">
+                <span class="tag amber">Individual keys: browser localStorage only</span>
+                <span class="tag green">Org keys: RLS-protected in database</span>
+                <span class="tag green">Never logged or transmitted to CSHUBB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Is AI run history stored? Can CSHUBB read my AI outputs?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>AI run history (the inputs and outputs of AI tool runs) is stored in your org's Supabase database, scoped by org_slug and protected by RLS. CSHUBB as a platform operator has admin-level database access for maintenance purposes, but does not actively monitor or analyse individual AI run content.</p>
+              <p>History is available to all authenticated users within your workspace, and admins can see all runs in the usage logs. You can delete AI history entries from within the app.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEBHOOKS -->
+      <div class="accordion-group" id="webhooks">
+        <div class="accordion-group-title">Webhooks & Integrations</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How are webhooks secured?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB webhooks support two modes depending on your plan:</p>
+              <ul>
+                <li><strong>Basic webhooks (Growth plan)</strong> — HTTP POST requests sent to your endpoint. Each webhook has a unique secret token generated at creation time. Pass this token in the <code>Authorization</code> header to verify the source.</li>
+                <li><strong>HMAC-signed webhooks (Pro + Enterprise)</strong> — Payloads are signed with <strong>HMAC-SHA256</strong> using your webhook secret. The signature is included in the <code>X-CSHUBB-Signature</code> header. Your receiving system can verify the signature before processing the payload, guaranteeing the request originated from CSHUBB and was not tampered with in transit.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag green">HMAC-SHA256 payload signing</span>
+                <span class="tag green">Per-webhook secret tokens</span>
+                <span class="tag amber">Replay attack prevention</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What data is included in webhook payloads?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Webhook payloads contain account data as configured for the event type (upsert, create, or update). Payloads are sent as JSON and include account fields like name, CSM, tier, ARR, health score, status, and any custom fields.</p>
+              <p>Webhook payloads never include user credentials, API keys, or authentication tokens. Only account-level data is transmitted.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIT & MONITORING -->
+      <div class="accordion-group" id="audit">
+        <div class="accordion-group-title">Audit Logs & Monitoring</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What is logged in the audit trail?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB maintains audit logs (available to org admins) covering:</p>
+              <ul>
+                <li>User logins and session starts</li>
+                <li>Account create, edit, bulk edit, and delete operations</li>
+                <li>AI tool runs (tool name, provider, timestamp, user)</li>
+                <li>Admin actions (invite code creation/revocation, role changes, feature flag updates)</li>
+                <li>Webhook creation, updates, and deletions</li>
+                <li>Beta requests and approval events</li>
+                <li>Account deletion requests</li>
+              </ul>
+              <p style="margin-top:10px">Audit logs are available on all plans and are scoped to your org only.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What usage analytics are tracked?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB uses <strong>PostHog</strong> for product analytics. Tracking is configured conservatively:</p>
+              <ul>
+                <li>Autocapture is disabled — only explicitly tracked events are logged</li>
+                <li>Session recording is disabled</li>
+                <li>Page views and named product events (e.g., AI tool run, account created) are captured</li>
+                <li>No PII (names, emails, account names) is sent to PostHog</li>
+              </ul>
+              <p style="margin-top:10px">Usage analytics within your Admin panel (AI runs per user, accounts count, etc.) are derived from your org's database records, not from PostHog.</p>
+              <div class="tag-row">
+                <span class="tag green">No session recording</span>
+                <span class="tag green">No autocapture</span>
+                <span class="tag green">EU PostHog endpoint</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INFRASTRUCTURE -->
+      <div class="accordion-group" id="infra">
+        <div class="accordion-group-title">Infrastructure</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What infrastructure does CSHUBB run on?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>The CSHUBB application and database run on:</p>
+              <ul>
+                <li><strong>Supabase</strong> — PostgreSQL database with built-in RLS, real-time subscriptions, and Auth. Hosted on AWS with automatic backups and point-in-time recovery.</li>
+                <li><strong>Supabase Edge Functions</strong> — Serverless functions for server-side operations that require the service role key. The service role key is never exposed to clients.</li>
+                <li><strong>Static hosting</strong> — The frontend application is served via CDN with HTTPS enforced.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag blue">Supabase / AWS-backed</span>
+                <span class="tag green">Automatic backups</span>
+                <span class="tag green">HTTPS enforced</span>
+                <span class="tag green">Service key server-side only</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Is the service role key (admin key) ever exposed to clients?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>No. The Supabase service role key (which bypasses RLS) is used exclusively in <strong>Edge Functions</strong> running server-side. The client-facing application uses only the Supabase anon key, which is subject to all RLS policies.</p>
+              <p>All privileged operations (e.g., provisioning a new org, sending invite emails, admin overrides) are performed via Edge Functions that validate the caller's JWT before executing any service-role operations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YOUR API KEYS -->
+      <div class="accordion-group" id="your-keys">
+        <div class="accordion-group-title">Your API Keys</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Does CSHUBB store my AI provider API keys on its servers?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p><strong>Individual mode</strong>: API keys are stored only in your browser's <code>localStorage</code>. They are never sent to CSHUBB servers, never logged, and never stored in the database.</p>
+              <p><strong>Org-wide key mode</strong> (admin-set): The admin-configured API key is stored in the <code>cs_org_features</code> record in Supabase, encrypted at rest, scoped by <code>org_slug</code>, and accessible only to authenticated members of that org. CSHUBB does not actively read or log these keys.</p>
+              <p>In both cases, API keys are used client-side to make direct requests to the AI provider. They do not pass through CSHUBB infrastructure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHARED RESPONSIBILITY -->
+      <div class="accordion-group" id="responsibility">
+        <div class="accordion-group-title">Shared Responsibility</div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What is the shared security responsibility model?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p><strong>CSHUBB is responsible for:</strong></p>
+              <ul>
+                <li>Database RLS policy enforcement and correctness</li>
+                <li>Secure authentication infrastructure (magic links, JWT validation)</li>
+                <li>Server-side key management (service role key, Edge Function secrets)</li>
+                <li>Infrastructure security (Supabase/AWS hosting, backups, encryption at rest)</li>
+                <li>Application security (preventing injection, XSS, CSRF)</li>
+              </ul>
+              <p style="margin-top:10px"><strong>Your organisation is responsible for:</strong></p>
+              <ul>
+                <li>Protecting email accounts used for magic link login</li>
+                <li>Safeguarding browser sessions on shared or public devices</li>
+                <li>Managing invite codes responsibly (not sharing codes publicly)</li>
+                <li>Revoking access promptly when team members leave</li>
+                <li>Protecting AI provider API keys stored in browsers</li>
+                <li>Compliance with applicable data protection regulations (GDPR, etc.) for the customer data you store in CSHUBB</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I report a security vulnerability?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Please report security vulnerabilities responsibly by emailing <a href="mailto:security@cshubb.com" style="color:#e8c97a;font-weight:600">security@cshubb.com</a>. Do not disclose security issues publicly until we have had a chance to address them.</p>
+              <p>We aim to acknowledge security reports within 24 hours and provide a resolution timeline within 72 hours. Critical vulnerabilities will be patched as a top priority.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Banner -->
+      <div class="contact-banner">
+        <div class="contact-banner-text">
+          <h4>Have a security question?</h4>
+          <p>Our security team is available for any questions about our architecture, data handling, or compliance.</p>
+        </div>
+        <a href="mailto:security@cshubb.com" class="contact-link">security@cshubb.com →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#lg2)"/><text x="14" y="19" text-anchor="middle" font-family="Lato,sans-serif" font-weight="900" font-size="12" fill="#000">CS</text><defs><linearGradient id="lg2" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#ff914d"/><stop offset="1" stop-color="#ffde59"/></linearGradient></defs></svg>
+          <span>CSHUBB</span>
+        </a>
+        <p class="footer-desc">Private Customer Success workspace for SaaS teams. Invite-only, AI-powered, security-first.</p>
+        <div class="footer-links-inline"><a href="mailto:support@cshubb.com">support@cshubb.com</a></div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#ai-tools">AI Tools</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="https://app.cshubb.com" target="_blank">Login</a>
+        <a href="https://join.cshubb.com" target="_blank">Request Access</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="security.html">Security Overview</a>
+        <a href="faq.html">FAQs</a>
+        <a href="https://www.slotmee.com/raja-2iwrb" target="_blank">Book a Demo</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:support@cshubb.com">support@cshubb.com</a>
+        <a href="mailto:security@cshubb.com">security@cshubb.com</a>
+        <a href="https://join.cshubb.com" target="_blank">join.cshubb.com</a>
+        <a href="https://app.cshubb.com" target="_blank">app.cshubb.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CSHUBB Innovations. All rights reserved.</span>
+      <span>Private beta · Invite only</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

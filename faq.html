@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FAQs — CSHUBB</title>
+<meta name="description" content="Frequently asked questions about CSHUBB — the private Customer Success workspace for SaaS teams. Covers getting started, AI tools, plans, security, integrations, and more."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.faq-search-wrap{max-width:520px;margin:28px auto 0;position:relative}
+.faq-search{width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#e8eaf0;padding:13px 44px 13px 18px;border-radius:12px;font-size:14px;font-family:inherit;transition:border-color .2s;outline:none}
+.faq-search:focus{border-color:rgba(255,145,77,.4)}
+.faq-search::placeholder{color:#3a3a3a}
+.faq-search-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#3a3a3a;pointer-events:none;font-size:16px}
+.faq-no-results{text-align:center;padding:48px 24px;color:#3a3a3a;font-size:14px;display:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#lg)"/><text x="14" y="19" text-anchor="middle" font-family="Lato,sans-serif" font-weight="900" font-size="12" fill="#000">CS</text><defs><linearGradient id="lg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#ff914d"/><stop offset="1" stop-color="#ffde59"/></linearGradient></defs></svg>
+      <span>CSHUBB</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#ai-tools">AI Tools</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="security.html">Security</a>
+      <a href="faq.html" class="active">FAQs</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://app.cshubb.com" class="btn-outline" target="_blank">Login</a>
+      <a href="https://join.cshubb.com" class="btn-primary" target="_blank">Request Beta Access</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#features" onclick="toggleMenu()">Features</a>
+    <a href="index.html#ai-tools" onclick="toggleMenu()">AI Tools</a>
+    <a href="index.html#pricing" onclick="toggleMenu()">Pricing</a>
+    <a href="security.html" onclick="toggleMenu()">Security</a>
+    <a href="faq.html" onclick="toggleMenu()">FAQs</a>
+    <div class="mobile-actions">
+      <a href="https://app.cshubb.com" class="btn-outline" target="_blank">Login</a>
+      <a href="https://join.cshubb.com" class="btn-primary" target="_blank">Request Beta Access</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-eyebrow">Frequently Asked Questions</div>
+    <h1>Everything you need<br/>to know about <span class="grad">CSHUBB</span></h1>
+    <p>Can't find your answer here? Email us at <a href="mailto:support@cshubb.com" style="color:#e8c97a;font-weight:600">support@cshubb.com</a> — we reply within 24 hours.</p>
+    <div class="faq-search-wrap">
+      <input class="faq-search" id="faqSearch" type="text" placeholder="Search questions…" oninput="filterFAQs(this.value)" autocomplete="off"/>
+      <span class="faq-search-icon">⌕</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACCORDION -->
+<section class="accordion-section">
+  <div class="container">
+    <div class="accordion-wrap" id="faqWrap">
+
+      <!-- GETTING STARTED -->
+      <div class="accordion-group" data-group="getting-started">
+        <div class="accordion-group-title">Getting Started</div>
+
+        <div class="accordion-item" data-keywords="what is cshubb customer success workspace saas">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What is CSHUBB?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB is a <strong>private, invite-only Customer Success workspace</strong> built for SaaS teams. It gives your CS team a secure hub to track account health, manage renewals, visualise revenue, monitor churn risk, and run AI-powered workflows — all in one place.</p>
+              <p>It's designed to replace the fragile combination of spreadsheets, CRM hacks, and scattered notes that most CS teams rely on, without the $30K/year cost of enterprise tools like Gainsight or Totango.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="how to get access invite beta join">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I get access to CSHUBB?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB is currently in <strong>private beta</strong>. Access is by invitation only. To request access:</p>
+              <ul>
+                <li>Visit <a href="https://join.cshubb.com" target="_blank" style="color:#e8c97a">join.cshubb.com</a> and submit a beta request with your name, work email, company, and team size.</li>
+                <li>We review requests and provision your workspace within 24 hours.</li>
+                <li>You'll receive an email with your invite code and login instructions.</li>
+              </ul>
+              <p style="margin-top:10px">Already have a workspace? Log in at <a href="https://app.cshubb.com" target="_blank" style="color:#e8c97a">app.cshubb.com</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="first login sign up register new user workspace">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How does first-time login work?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>On your first login, enter your full name, work email, organisation name, and the invite code you received. CSHUBB sends a <strong>magic link</strong> to your email — click it, return to the browser tab, and you'll be logged in automatically.</p>
+              <p>No passwords. No lengthy setup. Your workspace is ready immediately after first login.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="invite team members add users colleagues">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I add team members to my workspace?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Go to <strong>Admin → Invite Codes</strong> and generate invite codes for your team members. Share the code (and the login URL app.cshubb.com) with each person. They follow the same first-time login flow — entering their details and the code.</p>
+              <p>The number of users you can invite depends on your plan (Trial: 3, Starter: 5, Growth: 15, Pro: 50, Enterprise: unlimited).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="setup time implementation onboarding quickstart">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How long does it take to set up CSHUBB?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Most teams are fully operational within an hour of receiving access:</p>
+              <ul>
+                <li><strong>5 min</strong> — Log in and familiarise yourself with the Accounts module</li>
+                <li><strong>15 min</strong> — Download the CSV template, populate your accounts, drag-and-drop import</li>
+                <li><strong>5 min</strong> — Set up Groq AI (free key from console.groq.com) or use it instantly</li>
+                <li><strong>10 min</strong> — Invite your team members via invite codes</li>
+              </ul>
+              <p style="margin-top:10px">No professional services, no implementation projects, no 6-week onboarding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCOUNTS & DATA -->
+      <div class="accordion-group" data-group="accounts">
+        <div class="accordion-group-title">Accounts & Data</div>
+
+        <div class="accordion-item" data-keywords="import accounts csv data upload add">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I import my existing accounts?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Go to <strong>Import / Export</strong> → download the CSV template → fill in your account data → drag and drop the file onto the import zone (or click to browse).</p>
+              <p>The CSV supports these columns: <code>name, csm, tier, industry, region, status, health, arr, mrr, nps, usage, tickets, renewalDays, stage, expansionFlag, churnRisk, tags</code></p>
+              <p>All imported accounts sync instantly to all users in your org. You don't need to refresh.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="custom fields add field type text number dropdown">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Can I add custom fields to account records?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Yes, on <strong>Pro and Enterprise plans</strong>. Go to <strong>Import / Export → Custom Fields</strong> tab → add a field name and type (text, number, yes/no, date, or dropdown). Custom fields appear in account records, the add/edit modal, and bulk edit — and sync to all org users immediately.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="bulk edit multiple accounts update batch">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How does bulk editing work?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Select multiple accounts using the checkboxes in the Accounts table. A bulk action bar appears at the top. Click <strong>Edit</strong> to open the bulk edit modal — only fill in the fields you want to change (blank fields are skipped). Changes apply to all selected accounts and sync to all org users instantly.</p>
+              <p>Bulk edit is available on <strong>Starter and above</strong>. Bulk delete is an admin-only action on <strong>Pro and above</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="export csv json download backup data">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I export my data?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Go to <strong>Import / Export</strong> → Export section. You can export:</p>
+              <ul>
+                <li><strong>CSV</strong> — all accounts in spreadsheet-compatible format (all plans)</li>
+                <li><strong>JSON</strong> — full structured data export for backup or migration (Growth and above)</li>
+              </ul>
+              <p style="margin-top:10px">When bulk-deleting accounts (admin only), CSHUBB shows an export-first modal to ensure you always back up before deleting.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="search filter find account name csm region industry">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I find accounts quickly?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Use the <strong>search bar</strong> in the Accounts module to find any account by name, CSM, industry, or region — it filters instantly as you type.</p>
+              <p>For deeper analysis, use the <strong>7-dimension filter bar</strong> to slice by: Tier, Status, Health, Churn Risk, Region, Industry, and CSM simultaneously. Active filters are shown as a banner so you always know what slice you're looking at.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="notes activity log call summary csm">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do activity notes work?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Each account has an <strong>Activity Log</strong> where you can add timestamped notes with types: Call Summary, Risk Flag, Follow-up, QBR Note, Escalation, or General. Notes are visible to all workspace users and synced in real-time.</p>
+              <p>Access notes via the <strong>Quick Panel</strong> (click any account row → Notes tab) or from the full edit modal. Notes are stored indefinitely and ordered chronologically.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="columns show hide customise table view">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Can I customise which columns appear in the Accounts table?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Yes. Admins can show or hide columns by clicking the <strong>⚙ Columns</strong> button in the Accounts header. Column preferences are saved per org and apply to all team members. This keeps the table focused on the fields your team actually uses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI TOOLS -->
+      <div class="accordion-group" data-group="ai">
+        <div class="accordion-group-title">AI Tools</div>
+
+        <div class="accordion-item" data-keywords="groq setup ai key free provider">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I set up AI? Is it free?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p><strong>Groq is the default AI provider</strong> — it's fast, free, and runs Llama 3.1 8B at 500+ tokens/second. To use it:</p>
+              <ul>
+                <li>Go to <a href="https://console.groq.com" target="_blank" style="color:#e8c97a">console.groq.com</a> and create a free account</li>
+                <li>Generate an API key</li>
+                <li>Paste it in CSHUBB → AI Settings → Groq → Set as Active</li>
+              </ul>
+              <p style="margin-top:10px">Alternatively, your admin may have already set an org-wide Groq key — in which case you don't need to configure anything at all.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="lm studio offline local private no internet">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I use LM Studio for offline AI?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>LM Studio lets you run AI models 100% on your own device — no internet connection required, no data leaves your machine. Setup:</p>
+              <ul>
+                <li>Download LM Studio from lmstudio.ai</li>
+                <li>Load a model (e.g. Mistral 7B Instruct, Llama 3.1 8B)</li>
+                <li>Go to Local Server tab → Start Server → enable CORS</li>
+                <li>In CSHUBB → AI Settings → LM Studio → enter your server URL (default: <code>http://localhost:1234</code>) and model name</li>
+                <li>Click ⚡ Test Connection → Set as Active</li>
+              </ul>
+              <p style="margin-top:10px">LM Studio is available on <strong>Enterprise plan</strong> only, as it requires the user to run a local server.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="claude anthropic api key setup">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I connect Claude (Anthropic)?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Available on <strong>Pro and Enterprise plans</strong>. Get your API key from <a href="https://console.anthropic.com" target="_blank" style="color:#e8c97a">console.anthropic.com</a>, then paste it in CSHUBB → AI Settings → Claude → Set as Active. Your key is stored only in your browser and is never sent to CSHUBB servers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="gemini google api key model flash pro">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I connect Gemini (Google)?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Available on <strong>Growth, Pro, and Enterprise plans</strong>. Get a free API key from <a href="https://aistudio.google.com" target="_blank" style="color:#e8c97a">aistudio.google.com</a>. In CSHUBB → AI Settings → Gemini → paste your key and select a model (Gemini 2.5 Flash is recommended for speed and quality). Set as Active.</p>
+              <p>Supported models include: <code>gemini-2.5-flash</code>, <code>gemini-2.5-flash-lite</code>, <code>gemini-2.5-pro</code>, <code>gemini-2.0-flash</code>, <code>gemini-1.5-pro</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="org wide api key admin all users team key policy">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Can admins set a shared AI key for the whole team?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Yes. Admins can set the <strong>API Key Policy</strong> to "Org-wide key" mode in AI Settings. In this mode, the admin sets one API key that all team members use — users see AI working without ever needing to configure their own key. This is the recommended setup for most teams.</p>
+              <p>Alternatively, "Individual keys" mode lets each user bring their own key and choose their own provider.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="ai history delta tracking previous run compare">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What is AI run history and delta tracking?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Every AI tool run is saved with a timestamp, the output, and which account(s) or context it was run on. Click <strong>History</strong> on any AI tool card to see all past runs.</p>
+              <p><strong>Delta tracking</strong> compares the latest run against the previous one and highlights: new insights (green), removed items (red), and unchanged content (grey). This is especially useful for Weekly Digest and Churn Risk — you can immediately see what changed in your book week-over-week without reading everything from scratch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLANS & BILLING -->
+      <div class="accordion-group" data-group="billing">
+        <div class="accordion-group-title">Plans & Billing</div>
+
+        <div class="accordion-item" data-keywords="free cost pricing how much beta">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Is CSHUBB really free during beta?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Yes. CSHUBB is completely free during the private beta. No credit card is required at any point. All beta users get extended free access even after pricing is announced post-beta.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="plan difference trial starter growth pro enterprise features">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What's the difference between the plans?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Plans differ in the number of users, accounts, AI runs per month, and which features are enabled:</p>
+              <ul>
+                <li><strong>Trial</strong> — 3 users, 50 accounts, 20 AI runs/mo. Accounts module, CSV import/export, notes, tags, Account Pulse AI.</li>
+                <li><strong>Starter</strong> — 5 users, 200 accounts, 100 AI runs/mo. Adds Revenue, Pipeline, AI Tools module, Churn Risk AI, Weekly Digest AI, bulk edit.</li>
+                <li><strong>Growth</strong> — 15 users, 1,000 accounts, 500 AI runs/mo, 3 webhooks. Adds QBR Talking Points, Expansion Spotter, Gemini AI, JSON export.</li>
+                <li><strong>Pro</strong> — 50 users, 5,000 accounts, 2,000 AI runs/mo, 10 webhooks. Adds custom fields, bulk delete, Claude AI, HMAC webhook signing, org-wide key policy.</li>
+                <li><strong>Enterprise</strong> — Unlimited everything. Adds LM Studio, custom integrations, dedicated onboarding, SLA.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="upgrade plan change tier higher lower">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Can I upgrade or change my plan?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>During beta, plan changes are handled by the CSHUBB team. Email <a href="mailto:support@cshubb.com" style="color:#e8c97a">support@cshubb.com</a> or <a href="https://www.slotmee.com/raja-2iwrb" target="_blank" style="color:#e8c97a">book a call</a> to discuss upgrading your workspace. Post-beta, self-serve plan management will be available in Admin → Plan & Billing.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="feature flag module enable disable admin control">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What are feature flags and how do they work?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Feature flags control which modules and capabilities are active for your workspace. They are set per-org based on your plan. The CSHUBB admin (not your workspace admin) can also manually override feature flags for specific orgs — for example, to grant trial access to a Growth feature during an evaluation period.</p>
+              <p>Your workspace admin can see the current feature state in <strong>Admin → Org Control</strong>. Users must refresh their browser to see navigation changes after feature flags are updated.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTEGRATIONS & WEBHOOKS -->
+      <div class="accordion-group" data-group="integrations">
+        <div class="accordion-group-title">Integrations & Webhooks</div>
+
+        <div class="accordion-item" data-keywords="webhook connect zapier make n8n hubspot integration">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I connect CSHUBB to Zapier / Make / HubSpot?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Go to <strong>Admin → Webhooks → New Webhook</strong>. Copy the endpoint URL and secret token. Use these in your integration platform:</p>
+              <ul>
+                <li><strong>Zapier</strong> — use a Webhooks by Zapier trigger with the CSHUBB endpoint</li>
+                <li><strong>Make (Integromat)</strong> — use an HTTP module as a webhook receiver</li>
+                <li><strong>n8n</strong> — use a Webhook node</li>
+                <li><strong>HubSpot / other CRMs</strong> — configure HTTP POST to the CSHUBB webhook URL</li>
+              </ul>
+              <p style="margin-top:10px">Webhooks support <code>upsert</code>, <code>create</code>, and <code>update</code> modes. HMAC signing is available on Pro+ for payload verification.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="webhook limit number endpoints max plan">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How many webhooks can I create?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Webhook limits by plan: Trial (0), Starter (0), Growth (3), Pro (10), Enterprise (unlimited). Each webhook endpoint has its own URL and secret. Webhooks are only available on Growth plan and above.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN & SECURITY -->
+      <div class="accordion-group" data-group="admin">
+        <div class="accordion-group-title">Admin & Security</div>
+
+        <div class="accordion-item" data-keywords="admin panel who can access role permissions">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Who can access the Admin panel?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Only users with the <strong>admin role</strong> can see the Admin panel. The Admin panel includes: Users, Invite Codes, Usage Logs, Help Requests, Deletion Requests, Beta Requests, Webhooks, Org Control, and PLG Analytics.</p>
+              <p>The first user to create a workspace automatically becomes admin. Admins cannot be demoted through the UI — contact <a href="mailto:support@cshubb.com" style="color:#e8c97a">support@cshubb.com</a> if you need to transfer admin ownership.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="delete account remove user data gdpr right to erasure">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">How do I request account deletion?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Go to your <strong>Profile drawer</strong> (click your name/avatar in the sidebar) → Account Actions → ⚠ Request Account Deletion. This submits a deletion request to the CSHUBB admin. Alternatively, go to <strong>Help & Feedback</strong> → Request Type → Request Account Deletion.</p>
+              <p>Deletion requests are processed within 5 business days. All your personal data and associated account records will be removed.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="data isolation security my data other companies">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">Can other organisations see my data?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>No. CSHUBB uses <strong>Supabase Row-Level Security (RLS)</strong> at the database level to ensure complete data isolation between workspaces. Every row in every data table is scoped to your org. It is architecturally impossible for another workspace's queries to return your data. See the <a href="security.html" style="color:#e8c97a">Security Overview</a> for full details.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="posthog analytics tracking privacy personal data">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">What data does CSHUBB collect about me?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>CSHUBB collects:</p>
+              <ul>
+                <li><strong>Account data</strong>: your name, email, and org name — used to provision and manage your workspace access.</li>
+                <li><strong>Product analytics</strong>: anonymised usage events (e.g. "AI tool run", "account imported") via PostHog with session recording disabled, autocapture disabled, and no PII in event payloads.</li>
+                <li><strong>Support data</strong>: the content of any help requests or feedback you submit.</li>
+              </ul>
+              <p style="margin-top:10px">We do not sell, share, or monetise your data. Your customer account data belongs to you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TROUBLESHOOTING -->
+      <div class="accordion-group" data-group="troubleshooting">
+        <div class="accordion-group-title">Troubleshooting</div>
+
+        <div class="accordion-item" data-keywords="ai not working offline error no response">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">AI tools aren't working — what do I do?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Check these in order:</p>
+              <ul>
+                <li><strong>API status bar</strong> at the top shows "AI offline" — this means no provider is configured or your key is invalid.</li>
+                <li>Go to <strong>AI Settings</strong> → verify your Groq key is entered and the Groq dot is green.</li>
+                <li>Make sure the correct provider is set as active (click "Set as Active").</li>
+                <li>For LM Studio: confirm the local server is running, CORS is enabled, and the URL/model name are correct.</li>
+                <li>If using an org-wide key set by your admin, the status bar should show the provider. If it still shows offline, ask your admin to re-check the key.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="csv import not working error failed accounts not loading">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">My CSV import isn't working — how do I fix it?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Common fixes:</p>
+              <ul>
+                <li>Use the <strong>downloadable CSV template</strong> from Import / Export to ensure the correct column headers.</li>
+                <li>Column headers must exactly match the expected names (e.g. <code>arr</code> not <code>ARR</code> or <code>Annual Revenue</code>).</li>
+                <li>Health, usage, and NPS should be numbers (0–100). ARR and MRR should be numbers without currency symbols.</li>
+                <li><code>expansionFlag</code> should be <code>true</code> or <code>false</code>. <code>churnRisk</code> should be <code>Low</code>, <code>Medium</code>, <code>High</code>, or <code>Critical</code>.</li>
+                <li>Check the feedback message below the import zone — it usually explains what went wrong.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="magic link email not received spam junk login">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">I didn't receive the magic link email — what should I do?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Check your spam/junk folder first — magic link emails occasionally land there. The email comes from Supabase Auth on behalf of CSHUBB.</p>
+              <p>If you still don't see it after a few minutes, click <strong>← Try again</strong> on the login screen and re-enter your email to request a new link. Magic links expire after a short window, so old links may be invalid.</p>
+              <p>If the problem persists, email <a href="mailto:support@cshubb.com" style="color:#e8c97a">support@cshubb.com</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-keywords="access revoked blocked cannot login suspended">
+          <button class="accordion-btn">
+            <span class="accordion-btn-text">I see "Access Revoked" — what happened?</span>
+            <span class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#8892a4" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Your access to the workspace has been revoked by an admin. This can happen if you left the organisation, your seat was reassigned, or a billing issue suspended your org.</p>
+              <p>Contact your workspace admin for reinstatement, or email <a href="mailto:support@cshubb.com" style="color:#e8c97a">support@cshubb.com</a> if you believe this is an error.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No results -->
+      <div class="faq-no-results" id="faqNoResults">
+        No questions match your search. Try different keywords or email us at <a href="mailto:support@cshubb.com" style="color:#e8c97a">support@cshubb.com</a>.
+      </div>
+
+      <!-- Contact Banner -->
+      <div class="contact-banner">
+        <div class="contact-banner-text">
+          <h4>Still have questions?</h4>
+          <p>Our team replies within 24 hours — usually much faster during the beta.</p>
+        </div>
+        <a href="mailto:support@cshubb.com" class="contact-link">support@cshubb.com →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="url(#lg2)"/><text x="14" y="19" text-anchor="middle" font-family="Lato,sans-serif" font-weight="900" font-size="12" fill="#000">CS</text><defs><linearGradient id="lg2" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#ff914d"/><stop offset="1" stop-color="#ffde59"/></linearGradient></defs></svg>
+          <span>CSHUBB</span>
+        </a>
+        <p class="footer-desc">Private Customer Success workspace for SaaS teams. Invite-only, AI-powered, security-first.</p>
+        <div class="footer-links-inline"><a href="mailto:support@cshubb.com">support@cshubb.com</a></div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#ai-tools">AI Tools</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="https://app.cshubb.com" target="_blank">Login</a>
+        <a href="https://join.cshubb.com" target="_blank">Request Access</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="security.html">Security Overview</a>
+        <a href="faq.html">FAQs</a>
+        <a href="https://www.slotmee.com/raja-2iwrb" target="_blank">Book a Demo</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:support@cshubb.com">support@cshubb.com</a>
+        <a href="mailto:security@cshubb.com">security@cshubb.com</a>
+        <a href="https://join.cshubb.com" target="_blank">join.cshubb.com</a>
+        <a href="https://app.cshubb.com" target="_blank">app.cshubb.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CSHUBB Innovations. All rights reserved.</span>
+      <span>Private beta · Invite only</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+function filterFAQs(query) {
+  const q = query.toLowerCase().trim();
+  const items = document.querySelectorAll('.accordion-item');
+  const groups = document.querySelectorAll('.accordion-group');
+  let anyVisible = false;
+
+  items.forEach(item => {
+    const text = (item.querySelector('.accordion-btn-text')?.textContent || '').toLowerCase();
+    const keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+    const bodyText = (item.querySelector('.accordion-body-inner')?.textContent || '').toLowerCase();
+    const match = !q || text.includes(q) || keywords.includes(q) || bodyText.includes(q);
+    item.style.display = match ? '' : 'none';
+    if (match) anyVisible = true;
+  });
+
+  // Hide group titles if all items in group are hidden
+  groups.forEach(group => {
+    const visibleItems = group.querySelectorAll('.accordion-item:not([style*="display: none"])');
+    group.style.display = visibleItems.length > 0 ? '' : 'none';
+  });
+
+  document.getElementById('faqNoResults').style.display = anyVisible ? 'none' : 'block';
+}
+</script>
+</body>
+</html>
